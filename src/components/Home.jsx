@@ -17,7 +17,7 @@ export function Home(){
                           <Button>Detail</Button>
                         </CardActions>
                     </Card>
-                    
+                   
               </Grid>
               </Stack>
           ))}
