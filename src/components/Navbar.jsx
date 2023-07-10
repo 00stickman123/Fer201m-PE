@@ -1,13 +1,20 @@
-import { AppBar, Toolbar, Stack, Link } from "@mui/material";
-
+import { AppBar, Toolbar, Stack, Button } from "@mui/material";
+import { NavLink } from "react-router-dom";
 export function Navbar(){
+  const NavLinkStyles = ({ isActive}) => {
+    return {
+      fontWeight: isActive ? "bold" : 'bold',
+      textDecoration: isActive ? 'none' : 'none',
+      color: isActive ? 'white' : 'black'
+    }
+}
   return(
     <AppBar >
       <Toolbar>
           <Stack direction='row' spacing={2}>
-            <Link href="#" color="inherit" underline="none">Home</Link>
-            <Link href="#" color="inherit" underline="none">Dashboard</Link>
-            <Link href="#" color="inherit" underline="none">Contact</Link>   
+            <NavLink to='/' style={NavLinkStyles}>Home</NavLink>
+            <NavLink to='/dashboard' style={NavLinkStyles}>Dashboard</NavLink>
+            <NavLink to='/contact' style={NavLinkStyles}>Contact</NavLink>   
           </Stack>
       </Toolbar>
     </AppBar>
