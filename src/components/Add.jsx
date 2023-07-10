@@ -11,6 +11,8 @@ export const Add = () => {
   const [image, setImage] = useState("");
   const [address, setAddress] = useState("");
   const navigate = useNavigate();
+
+  const canSave = Boolean(name.length > 2) && Boolean(age) && Boolean(image) && Boolean(address)
  
   function handleAdd(){
       dispatch(addUser(name, image, age, address));
@@ -24,13 +26,12 @@ export const Add = () => {
     }} >       
           <TextField label='name' variant='outlined'  required={true} inputProps={{
             required: true,
-            maxLength: 12
           }} onChange={(e) => setName(e.target.value)} />
-          <TextField label='Age' variant='outlined' required  onChange={(e) => setAge(e.target.value)}/>
-          <TextField label='Image' variant='outlined' required onChange={(e) => setImage(e.target.value)}/>
+          <TextField type='number' label='Age' variant='outlined' required  onChange={(e) => setAge(e.target.value)}/>
+          <TextField  label='Image' variant='outlined' required onChange={(e) => setImage(e.target.value)}/>
           <TextField label='Address' variant='outlined' required  onChange={(e) => setAddress(e.target.value)}/>
        
-          <Button onClick={handleAdd} variant='contained' color='primary'>Create</Button>
+          <Button disabled={!canSave} onClick={handleAdd} variant='contained' color='primary'>Create</Button>
        
     </Stack>
     </Grid>
